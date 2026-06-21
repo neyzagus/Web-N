@@ -1,0 +1,75 @@
+CONFIGURAR FIREBASE - MAXIMIZA TU EMPRESA
+
+1. Ir a:
+   https://console.firebase.google.com/
+
+2. Crear proyecto:
+   Nombre recomendado: maximizatuempresa
+
+3. Crear app web:
+   Project settings -> General -> Your apps -> Web app </>
+
+4. Copiar firebaseConfig y pegarlo en:
+   firebase-config.js
+
+5. Activar Authentication:
+   Build -> Authentication -> Get started
+   Sign-in method -> Email/Password -> Enable
+
+6. Crear usuario admin:
+   Authentication -> Users -> Add user
+   Email: maximizatuempresas@gmail.com
+   Password: crea tu clave privada
+
+7. Activar Firestore:
+   Build -> Firestore Database -> Create database
+   Modo: Production
+   Ubicación: elige una y no la cambies
+
+8. Reglas Firestore:
+   Copia esto en Rules y publica:
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /site/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null
+        && request.auth.token.email == "maximizatuempresas@gmail.com";
+    }
+  }
+}
+
+9. Activar Storage:
+   Build -> Storage -> Get started
+
+10. Reglas Storage:
+   Copia esto en Rules y publica:
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /site/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null
+        && request.auth.token.email == "maximizatuempresas@gmail.com";
+    }
+  }
+}
+
+11. Subir a GitHub:
+   Subir TODO el contenido de este ZIP descomprimido a la raíz del repo.
+
+12. Netlify:
+   Publish directory: .
+   Functions directory: netlify/functions
+
+13. Abrir:
+   https://maximizatuempresa.netlify.app/admin.html
+
+Spotify:
+- No es obligatorio para esta fase.
+- Para Spotify real luego necesitarás:
+  SPOTIFY_CLIENT_ID
+  SPOTIFY_CLIENT_SECRET
+  SPOTIFY_REFRESH_TOKEN

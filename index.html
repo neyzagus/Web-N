@@ -34,7 +34,7 @@
     <span></span><span></span><span></span>
   </button>
 
-  <a class="nav-cta" href="https://wa.me/51989562313?text=Hola%20Zamir%2C%20quiero%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
+  <a class="nav-cta" href="https://wa.me/51989562313?text=Hola%20Zamir%2C%20quiero%20informaci%C3%B3n%20sobre%20tus%20servicios." data-link="whatsapp" target="_blank" rel="noopener">
     Mensaje ↗
   </a>
 </header>
@@ -43,7 +43,7 @@
     <div class="hero-grid">
       <article class="profile-card glass reveal">
         <div class="profile-visual">
-          <img src="assets/perfil-oscuro.svg" alt="Imagen temporal oscura para reemplazar por foto real" />
+          <img data-image="profile" src="assets/perfil-oscuro.svg" alt="Imagen principal" />
         </div>
         <div class="profile-caption">
           <strong>Imagen temporal</strong>
@@ -52,11 +52,10 @@
       </article>
 
       <article class="hero-copy reveal">
-        <span class="tag">Zamir Rojas Jaramillo</span>
-        <h1>Tu acceso directo a mis <span>redes, proyectos y servicios</span></h1>
+        <span class="tag" data-content="displayName">Zamir Rojas Jaramillo</span>
+        <h1 data-content="heroTitle">Tu acceso directo a mis <span>redes, proyectos y servicios</span></h1>
         <p>
-          Soy el creador de Maximiza tu Empresa. En esta página encontrarás mi información, redes sociales,
-          portafolio, páginas web realizadas, pagos, donaciones y contacto directo.
+          <span data-content="heroSubtitle">Soy el creador de Maximiza tu Empresa. En esta página encontrarás mi información, redes sociales, portafolio, páginas web realizadas, pagos, donaciones y contacto directo.</span>
         </p>
 
         <div class="hero-actions">
@@ -74,14 +73,14 @@
       <article class="holo-card glass reveal">
         <div class="holo-status">
           <span class="dot" data-status-dot></span>
-          <span data-status-label>Calculando estado...</span>
+          <span data-status-label data-content="statusLabel">Calculando estado...</span>
         </div>
 
         <div class="holo-n">N</div>
 
         <div class="status-mini">
           <strong data-status-title>Estado personal</strong>
-          <p data-status-description>La página ajusta el estado según horario o selección manual.</p>
+          <p data-status-description data-content="statusDescription">La página ajusta el estado según horario o selección manual.</p>
         </div>
 
         <div class="spotify-widget" id="spotifyWidget">
@@ -106,13 +105,13 @@
     </div>
 
     <div class="access-grid reveal">
-      <a class="link-card" href="spotify.html">
+      <a class="link-card" href="spotify.html" data-link="spotify">
         <span class="link-icon">♫</span>
         <div><strong>Spotify</strong><small>Lo que escucho ahora</small></div>
         <b>→</b>
       </a>
 
-      <a class="link-card" href="facebook.html">
+      <a class="link-card" href="facebook.html" data-link="facebook">
         <span class="link-icon">f</span>
         <div><strong>Facebook</strong><small>Red social y novedades</small></div>
         <b>→</b>
@@ -160,7 +159,7 @@
         <b>→</b>
       </a>
 
-      <a class="link-card" href="contacto.html">
+      <a class="link-card" href="contacto.html" data-link="email">
         <span class="link-icon">@</span>
         <div><strong>Correo</strong><small>Contacto profesional</small></div>
         <b>→</b>
@@ -182,5 +181,6 @@
 
 <div class="toast" id="toast"></div>
 <script src="script.js"></script>
+  <script type="module" src="firebase-public.js"></script>
 </body>
 </html>

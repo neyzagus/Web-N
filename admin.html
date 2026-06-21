@@ -7,7 +7,7 @@
   <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    body[data-page="admin"] { overflow-x: hidden; }
+    [hidden] { display: none !important; }
     body[data-page="admin"] .admin-main {
       min-height: 100vh;
       display: flex;
@@ -15,18 +15,38 @@
       align-items: center;
       padding: 24px;
     }
-    body[data-page="admin"] .admin-box,
-    body[data-page="admin"] .admin-panel {
+    body[data-page="admin"] .admin-box {
       width: min(520px, calc(100vw - 32px));
       margin: 0 auto;
+      padding: 30px;
     }
     body[data-page="admin"] .admin-panel {
-      width: min(980px, calc(100vw - 32px));
+      width: min(1100px, calc(100vw - 32px));
+      margin: 0 auto;
     }
     body[data-page="admin"] .admin-logo {
       margin-inline: auto;
     }
-    [hidden] { display: none !important; }
+    .admin-edit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+    }
+    .admin-edit-grid .full {
+      grid-column: 1 / -1;
+    }
+    .admin-section-title {
+      margin: 22px 0 10px;
+      color: var(--cyan);
+      font-weight: 1000;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .8rem;
+    }
+    @media(max-width:760px){
+      .admin-edit-grid { grid-template-columns: 1fr; }
+      .admin-edit-grid .full { grid-column: auto; }
+    }
   </style>
 </head>
 <body data-page="admin">
@@ -38,12 +58,15 @@
       <span class="brand-mark admin-logo">N</span>
       <h1>Admin</h1>
 
-      <form id="adminLoginForm">
-        <input class="input" id="adminPassword" type="password" placeholder="Clave" autocomplete="current-password" />
+      <form id="firebaseLoginForm">
+        <input class="input" id="adminEmail" type="email" placeholder="Correo admin" autocomplete="username" value="maximizatuempresas@gmail.com" />
+        <input class="input" id="adminPassword" type="password" placeholder="Clave" autocomplete="current-password" style="margin-top:12px;" />
+
         <div class="hero-actions" style="justify-content:center;margin-bottom:0;">
           <button class="btn-primary magnetic" type="submit">Entrar</button>
           <a class="btn-secondary" href="index.html">Volver</a>
         </div>
+
         <p class="admin-message" id="adminMessage"></p>
       </form>
     </section>
@@ -52,36 +75,74 @@
       <div class="admin-top">
         <div>
           <span class="eyebrow">Panel privado</span>
-          <h1>Estado</h1>
+          <h1>Editar web</h1>
         </div>
         <div class="hero-actions" style="margin:0;">
           <a class="btn-secondary" href="index.html">Ver web</a>
-          <button class="btn-secondary" id="adminLogout">Salir</button>
+          <button class="btn-secondary" id="logoutButton">Salir</button>
         </div>
       </div>
 
       <article class="page-card glass">
-        <div class="notice" id="currentStatusPreview">Cargando estado...</div>
+        <form id="contentForm">
+          <p class="admin-section-title">Datos principales</p>
+          <div class="admin-edit-grid">
+            <input class="input" name="brandName" placeholder="Marca" />
+            <input class="input" name="displayName" placeholder="Nombre visible" />
+            <input class="input full" name="heroTitle" placeholder="Título principal" />
+            <textarea class="input full" name="heroSubtitle" placeholder="Subtítulo"></textarea>
+          </div>
 
-        <div class="admin-controls">
-          <select class="input" id="adminDuration">
-            <option value="1">1 hora</option>
-            <option value="2">2 horas</option>
-            <option value="4" selected>4 horas</option>
-            <option value="8">8 horas</option>
-            <option value="24">24 horas</option>
-          </select>
+          <p class="admin-section-title">Contacto</p>
+          <div class="admin-edit-grid">
+            <input class="input" name="email" placeholder="Correo público" />
+            <input class="input" name="whatsapp" placeholder="WhatsApp" />
+            <textarea class="input full" name="whatsappMessage" placeholder="Mensaje automático de WhatsApp"></textarea>
+          </div>
 
-          <button class="btn-secondary" id="adminClearStatus">Automático</button>
-          <a class="btn-primary" href="index.html">Listo</a>
+          <p class="admin-section-title">Redes</p>
+          <div class="admin-edit-grid">
+            <input class="input" name="facebookUrl" placeholder="Facebook URL" />
+            <input class="input" name="spotifyUrl" placeholder="Spotify URL" />
+            <input class="input" name="instagramUrl" placeholder="Instagram URL" />
+            <input class="input" name="tiktokUrl" placeholder="TikTok URL" />
+            <input class="input" name="youtubeUrl" placeholder="YouTube URL" />
+            <input class="input" name="linkedinUrl" placeholder="LinkedIn URL" />
+            <input class="input full" name="githubUrl" placeholder="GitHub URL" />
+          </div>
+
+          <p class="admin-section-title">Imagen</p>
+          <div class="admin-edit-grid">
+            <input class="input full" name="profileImageUrl" placeholder="URL de imagen principal" />
+            <input class="input full" id="profileImageInput" type="file" accept="image/*" />
+          </div>
+
+          <p class="admin-section-title">Estado</p>
+          <div class="admin-edit-grid">
+            <input class="input" name="statusLabel" placeholder="Estado actual" />
+            <input class="input" name="statusDescription" placeholder="Descripción del estado" />
+            <input class="input" name="officeHours" placeholder="Horario oficina" />
+            <input class="input" name="gymHours" placeholder="Horario gimnasio" />
+            <input class="input full" name="restHours" placeholder="Horario descanso" />
+          </div>
+
+          <p class="admin-section-title">Servicios y pagos</p>
+          <div class="admin-edit-grid">
+            <textarea class="input full" name="servicesText" placeholder="Servicios"></textarea>
+            <textarea class="input full" name="paymentsText" placeholder="Pagos / donaciones"></textarea>
+          </div>
+        </form>
+
+        <div class="hero-actions">
+          <button class="btn-primary magnetic" id="saveContent">Guardar cambios</button>
+          <a class="btn-secondary" href="index.html">Listo</a>
         </div>
-
-        <div class="admin-status-grid" id="adminStatusOptions"></div>
       </article>
     </section>
   </main>
 
   <div class="toast" id="toast"></div>
   <script src="script.js"></script>
+  <script type="module" src="firebase-admin.js"></script>
 </body>
 </html>
