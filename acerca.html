@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acerca de mí | Maximiza tu Empresa</title>
+  <meta name="description" content="Web personal futurista de Zamir Rojas Jaramillo, creador de Maximiza tu Empresa." />
+  <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="acerca">
+<canvas id="particles"></canvas>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<header class="navbar glass">
+  <a class="brand" href="index.html" aria-label="Inicio Maximiza tu Empresa">
+    <span class="brand-mark">N</span>
+    <span>
+      <strong>MAXIMIZA</strong>
+      <small>tu Empresa</small>
+    </span>
+  </a>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html" data-nav="inicio">Inicio</a>
+    <a href="index.html#accesos" data-nav="enlaces">Enlaces</a>
+    <a href="portafolio.html" data-nav="portafolio">Portafolio</a>
+    <a href="servicios.html" data-nav="servicios">Servicios</a>
+    <a href="acerca.html" data-nav="acerca">Acerca de mí</a>
+    <a href="contacto.html" data-nav="contacto">Contacto</a>
+  </nav>
+
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <a class="nav-cta" href="https://wa.me/51989562313?text=Hola%20Zamir%2C%20quiero%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
+    Mensaje ↗
+  </a>
+</header>
+<main class="inner-main">
+  <section class="page-hero reveal">
+    <div>
+      <span class="eyebrow">Acerca de mí</span>
+      <h1 class="page-title">Soy creador de <span>Maximiza tu Empresa</span></h1>
+      <p class="page-subtitle">
+        Esta sección presenta quién soy, qué hago y cuál es mi enfoque al crear páginas web, sistemas y herramientas digitales.
+      </p>
+    </div>
+    <a class="small-btn secondary" href="index.html#accesos">← Volver a enlaces</a>
+  </section>
+
+  <section class="grid-2">
+    <article class="page-card glass reveal">
+      <h2>Mi enfoque</h2>
+      <p>
+        Soy Zamir Rojas Jaramillo, creador de Maximiza tu Empresa. Trabajo en ideas digitales que ayuden a negocios,
+        emprendedores y marcas a tener una presencia más profesional, ordenada y fácil de mostrar.
+      </p>
+      <p>
+        Me enfoco en páginas web modernas, portafolios, paneles, sistemas de control y soluciones que permitan mostrar
+        servicios, recibir mensajes, ordenar información y conectar mejor con clientes.
+      </p>
+    </article>
+
+    <article class="terminal glass reveal">
+      <div class="terminal-top"><span></span><span></span><span></span></div>
+      <pre><code>IDENTIDAD: Zamir Rojas Jaramillo
+MARCA: Maximiza tu Empresa
+ROL: Creador digital
+CONTACTO: 989 562 313
+CORREO: zamirrojas1990@gmail.com
+ESTILO: Futurista, moderno y profesional</code></pre>
+    </article>
+  </section>
+
+  <section class="grid-3" style="margin-top:18px">
+    <article class="info-card glass reveal">
+      <h3>Diseño visual</h3>
+      <p>Interfaces modernas, limpias, futuristas y con una presentación profesional para marcas y negocios.</p>
+    </article>
+    <article class="info-card glass reveal">
+      <h3>Orden digital</h3>
+      <p>Ideas pensadas para mostrar información clara, enlaces, contacto, servicios y proyectos sin saturar la página.</p>
+    </article>
+    <article class="info-card glass reveal">
+      <h3>Proyectos reales</h3>
+      <p>Portafolios, páginas web, dashboards, sistemas internos y automatizaciones según la necesidad del cliente.</p>
+    </article>
+  </section>
+</main>
+<footer class="footer glass">
+  <a class="brand mini-brand" href="index.html">
+    <span class="brand-mark">N</span>
+    <span>
+      <strong>MAXIMIZA</strong>
+      <small>tu Empresa</small>
+    </span>
+  </a>
+  <p>© <span id="year"></span> Maximiza tu Empresa. Web personal de Zamir Rojas Jaramillo.</p>
+  <button class="copy-btn" id="copyPhone">Copiar WhatsApp</button>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

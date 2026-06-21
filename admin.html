@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | Maximiza tu Empresa</title>
+  <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="admin">
+  <canvas id="particles"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <main class="admin-main">
+    <section class="admin-box glass" id="adminLoginBox">
+      <span class="brand-mark admin-logo">N</span>
+      <h1>Admin</h1>
+
+      <form id="adminLoginForm">
+        <input class="input" id="adminPassword" type="password" placeholder="Clave" autocomplete="current-password" />
+        <div class="hero-actions" style="justify-content:center;margin-bottom:0;">
+          <button class="btn-primary magnetic" type="submit">Entrar</button>
+          <a class="btn-secondary" href="index.html">Volver</a>
+        </div>
+        <p class="admin-message" id="adminMessage"></p>
+      </form>
+    </section>
+
+    <section class="admin-panel hidden" id="adminPanel">
+      <div class="admin-top">
+        <div>
+          <span class="eyebrow">Panel privado</span>
+          <h1>Estado</h1>
+        </div>
+        <div class="hero-actions" style="margin:0;">
+          <a class="btn-secondary" href="index.html">Ver web</a>
+          <button class="btn-secondary" id="adminLogout">Salir</button>
+        </div>
+      </div>
+
+      <article class="page-card glass">
+        <div class="notice" id="currentStatusPreview">Cargando estado...</div>
+
+        <div class="admin-controls">
+          <select class="input" id="adminDuration">
+            <option value="1">1 hora</option>
+            <option value="2">2 horas</option>
+            <option value="4" selected>4 horas</option>
+            <option value="8">8 horas</option>
+            <option value="24">24 horas</option>
+          </select>
+
+          <button class="btn-secondary" id="adminClearStatus">Automático</button>
+          <a class="btn-primary" href="index.html">Listo</a>
+        </div>
+
+        <div class="admin-status-grid" id="adminStatusOptions"></div>
+      </article>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

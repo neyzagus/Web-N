@@ -1,0 +1,13 @@
+{
+  "name": "maximiza-portafolio-futurista",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Web personal futurista de Maximiza tu Empresa con estado dinámico y Spotify preparado para Netlify.",
+  "scripts": {
+    "dev": "netlify dev",
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "@netlify/blobs": "latest"
+  }
+}

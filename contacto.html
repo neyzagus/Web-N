@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | Maximiza tu Empresa</title>
+  <meta name="description" content="Web personal futurista de Zamir Rojas Jaramillo, creador de Maximiza tu Empresa." />
+  <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="contacto">
+<canvas id="particles"></canvas>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<header class="navbar glass">
+  <a class="brand" href="index.html" aria-label="Inicio Maximiza tu Empresa">
+    <span class="brand-mark">N</span>
+    <span>
+      <strong>MAXIMIZA</strong>
+      <small>tu Empresa</small>
+    </span>
+  </a>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html" data-nav="inicio">Inicio</a>
+    <a href="index.html#accesos" data-nav="enlaces">Enlaces</a>
+    <a href="portafolio.html" data-nav="portafolio">Portafolio</a>
+    <a href="servicios.html" data-nav="servicios">Servicios</a>
+    <a href="acerca.html" data-nav="acerca">Acerca de mí</a>
+    <a href="contacto.html" data-nav="contacto">Contacto</a>
+  </nav>
+
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <a class="nav-cta" href="https://wa.me/51989562313?text=Hola%20Zamir%2C%20quiero%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
+    Mensaje ↗
+  </a>
+</header>
+<main class="inner-main">
+  <section class="page-hero reveal">
+    <div>
+      <span class="eyebrow">Contacto</span>
+      <h1 class="page-title">Hablemos por <span>WhatsApp o correo</span></h1>
+      <p class="page-subtitle">Elige el canal que prefieras para solicitar información, cotización o soporte.</p>
+    </div>
+    <a class="small-btn secondary" href="index.html#accesos">← Volver a enlaces</a>
+  </section>
+
+  <section class="grid-3">
+    <article class="info-card glass reveal">
+      <h3>WhatsApp</h3>
+      <p>989562313</p>
+      <a class="small-btn" href="https://wa.me/51989562313?text=Hola%20Zamir%2C%20vengo%20desde%20tu%20web%20personal." target="_blank" rel="noopener">Abrir WhatsApp</a>
+    </article>
+    <article class="info-card glass reveal">
+      <h3>Correo</h3>
+      <p>zamirrojas1990@gmail.com</p>
+      <a class="small-btn" href="mailto:zamirrojas1990@gmail.com?subject=Contacto%20desde%20tu%20web">Enviar correo</a>
+    </article>
+    <article class="info-card glass reveal">
+      <h3>Copiar datos</h3>
+      <p>Copia el teléfono o el correo para guardarlo.</p>
+      <div class="hero-actions">
+        <button class="small-btn" id="copyPhone">Copiar WhatsApp</button>
+        <button class="small-btn secondary" id="copyEmail">Copiar correo</button>
+      </div>
+    </article>
+  </section>
+</main>
+<footer class="footer glass">
+  <a class="brand mini-brand" href="index.html">
+    <span class="brand-mark">N</span>
+    <span>
+      <strong>MAXIMIZA</strong>
+      <small>tu Empresa</small>
+    </span>
+  </a>
+  <p>© <span id="year"></span> Maximiza tu Empresa. Web personal de Zamir Rojas Jaramillo.</p>
+  <button class="copy-btn" id="copyPhone">Copiar WhatsApp</button>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio | Maximiza tu Empresa</title>
+  <meta name="description" content="Web personal futurista de Zamir Rojas Jaramillo, creador de Maximiza tu Empresa." />
+  <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="portafolio">
+<canvas id="particles"></canvas>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<header class="navbar glass">
+  <a class="brand" href="index.html" aria-label="Inicio Maximiza tu Empresa">
+    <span class="brand-mark">N</span>
+    <span>
+      <strong>MAXIMIZA</strong>
+      <small>tu Empresa</small>
+    </span>
+  </a>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html" data-nav="inicio">Inicio</a>
+    <a href="index.html#accesos" data-nav="enlaces">Enlaces</a>
+    <a href="portafolio.html" data-nav="portafolio">Portafolio</a>
+    <a href="servicios.html" data-nav="servicios">Servicios</a>
+    <a href="acerca.html" data-nav="acerca">Acerca de mí</a>
+    <a href="contacto.html" data-nav="contacto">Contacto</a>
+  </nav>
+
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <a class="nav-cta" href="https://wa.me/51989562313?text=Hola%20Zamir%2C%20quiero%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
+    Mensaje ↗
+  </a>
+</header>
+<main class="inner-main">
+  <section class="page-hero reveal">
+    <div>
+      <span class="eyebrow">Portafolio</span>
+      <h1 class="page-title">Proyectos y conceptos <span>digitales</span></h1>
+      <p class="page-subtitle">
+        Una vista ordenada de proyectos, ideas y soluciones que forman parte de mi enfoque como creador de Maximiza tu Empresa.
+      </p>
+    </div>
+    <a class="small-btn secondary" href="index.html#accesos">← Volver a enlaces</a>
+  </section>
+
+  <section class="grid-4">
+    <article class="project-card glass reveal">
+  <div class="project-preview preview-a"><span>Landing empresarial</span></div>
+  <h3>Maximiza tu Empresa</h3>
+  <p>Presentación digital para servicios, marca personal, contacto y captación de clientes.</p>
+  <a class="small-btn secondary" href="solicitar.html">Solicitar algo similar</a>
+</article>
+
+<article class="project-card glass reveal">
+  <div class="project-preview preview-b"><span>Panel SaaS</span></div>
+  <h3>SubControl</h3>
+  <p>Sistema pensado para clientes, cobros, suscripciones, recibos, utilidades y seguimiento mensual o anual.</p>
+  <a class="small-btn secondary" href="solicitar.html">Solicitar sistema</a>
+</article>
+
+<article class="project-card glass reveal">
+  <div class="project-preview preview-c"><span>Inventario</span></div>
+  <h3>Smart Inventory</h3>
+  <p>Control de stock, establecimientos, movimientos, solicitudes de traslado, permisos y notificaciones.</p>
+  <a class="small-btn secondary" href="solicitar.html">Solicitar sistema</a>
+</article>
+
+<article class="project-card glass reveal">
+  <div class="project-preview preview-d"><span>Automatización</span></div>
+  <h3>CDR Processor</h3>
+  <p>Herramienta para organizar XML y CDR, extraer documentos, renombrar archivos y ahorrar tiempo.</p>
+  <a class="small-btn secondary" href="solicitar.html">Solicitar automatización</a>
+</article>
+  </section>
+</main>
+<footer class="footer glass">
+  <a class="brand mini-brand" href="index.html">
+    <span class="brand-mark">N</span>
+    <span>
+      <strong>MAXIMIZA</strong>
+      <small>tu Empresa</small>
+    </span>
+  </a>
+  <p>© <span id="year"></span> Maximiza tu Empresa. Web personal de Zamir Rojas Jaramillo.</p>
+  <button class="copy-btn" id="copyPhone">Copiar WhatsApp</button>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

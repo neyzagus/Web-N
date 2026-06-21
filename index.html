@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maximiza tu Empresa | Enlaces y Portafolio</title>
+  <meta name="description" content="Web personal futurista de Zamir Rojas Jaramillo, creador de Maximiza tu Empresa." />
+  <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="inicio">
+<canvas id="particles"></canvas>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<header class="navbar glass">
+  <a class="brand" href="index.html" aria-label="Inicio Maximiza tu Empresa">
+    <span class="brand-mark">N</span>
+    <span>
+      <strong>MAXIMIZA</strong>
+      <small>tu Empresa</small>
+    </span>
+  </a>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html" data-nav="inicio">Inicio</a>
+    <a href="index.html#accesos" data-nav="enlaces">Enlaces</a>
+    <a href="portafolio.html" data-nav="portafolio">Portafolio</a>
+    <a href="servicios.html" data-nav="servicios">Servicios</a>
+    <a href="acerca.html" data-nav="acerca">Acerca de mí</a>
+    <a href="contacto.html" data-nav="contacto">Contacto</a>
+  </nav>
+
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <a class="nav-cta" href="https://wa.me/51989562313?text=Hola%20Zamir%2C%20quiero%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
+    Mensaje ↗
+  </a>
+</header>
+<main>
+  <section class="section home-hero" id="inicio">
+    <div class="hero-grid">
+      <article class="profile-card glass reveal">
+        <div class="profile-visual">
+          <img src="assets/perfil-oscuro.svg" alt="Imagen temporal oscura para reemplazar por foto real" />
+        </div>
+        <div class="profile-caption">
+          <strong>Imagen temporal</strong>
+          <span>Luego se reemplaza por tu foto real.</span>
+        </div>
+      </article>
+
+      <article class="hero-copy reveal">
+        <span class="tag">Zamir Rojas Jaramillo</span>
+        <h1>Tu acceso directo a mis <span>redes, proyectos y servicios</span></h1>
+        <p>
+          Soy el creador de Maximiza tu Empresa. En esta página encontrarás mi información, redes sociales,
+          portafolio, páginas web realizadas, pagos, donaciones y contacto directo.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary magnetic" href="#accesos">Ver accesos</a>
+          <a class="btn-secondary magnetic" href="solicitar.html">Solicitar página web</a>
+        </div>
+
+        <div class="quick-stats">
+          <div><strong>Portafolio</strong><span>Proyectos y webs</span></div>
+          <div><strong>Servicios</strong><span>Páginas y sistemas</span></div>
+          <div><strong>Contacto</strong><span>WhatsApp directo</span></div>
+        </div>
+      </article>
+
+      <article class="holo-card glass reveal">
+        <div class="holo-status">
+          <span class="dot" data-status-dot></span>
+          <span data-status-label>Calculando estado...</span>
+        </div>
+
+        <div class="holo-n">N</div>
+
+        <div class="status-mini">
+          <strong data-status-title>Estado personal</strong>
+          <p data-status-description>La página ajusta el estado según horario o selección manual.</p>
+        </div>
+
+        <div class="spotify-widget" id="spotifyWidget">
+          <div class="spotify-cover">
+            <span>♫</span>
+          </div>
+          <div class="spotify-info">
+            <small>Spotify</small>
+            <strong id="spotifyTitle">Preparado para conectar</strong>
+            <p id="spotifyArtist">Widget listo para Netlify Functions.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section access-section" id="accesos">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Accesos principales</span>
+      <h2>Mi información y enlaces</h2>
+      <p>Elige qué quieres ver. Cada opción abre su propia página para que todo se mantenga ordenado.</p>
+    </div>
+
+    <div class="access-grid reveal">
+      <a class="link-card" href="spotify.html">
+        <span class="link-icon">♫</span>
+        <div><strong>Spotify</strong><small>Lo que escucho ahora</small></div>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="facebook.html">
+        <span class="link-icon">f</span>
+        <div><strong>Facebook</strong><small>Red social y novedades</small></div>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="acerca.html">
+        <span class="link-icon">i</span>
+        <div><strong>Información</strong><small>Más sobre mí y mi enfoque</small></div>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="portafolio.html">
+        <span class="link-icon">▣</span>
+        <div><strong>Portafolio</strong><small>Proyectos realizados</small></div>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="webs.html">
+        <span class="link-icon">◎</span>
+        <div><strong>Mis webs</strong><small>Páginas y sistemas creados</small></div>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="pagos.html">
+        <span class="link-icon">▰</span>
+        <div><strong>Pagos</strong><small>Opciones para coordinar pago</small></div>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="donaciones.html">
+        <span class="link-icon">♡</span>
+        <div><strong>Donaciones</strong><small>Apoya mis proyectos</small></div>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="servicios.html">
+        <span class="link-icon">⌘</span>
+        <div><strong>Creación web</strong><small>Páginas para negocios</small></div>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="solicitar.html">
+        <span class="link-icon">✦</span>
+        <div><strong>Solicitar servicio</strong><small>Cuéntame tu idea</small></div>
+        <b>→</b>
+      </a>
+
+      <a class="link-card" href="contacto.html">
+        <span class="link-icon">@</span>
+        <div><strong>Correo</strong><small>Contacto profesional</small></div>
+        <b>→</b>
+      </a>
+    </div>
+  </section>
+</main>
+<footer class="footer glass">
+  <a class="brand mini-brand" href="index.html">
+    <span class="brand-mark">N</span>
+    <span>
+      <strong>MAXIMIZA</strong>
+      <small>tu Empresa</small>
+    </span>
+  </a>
+  <p>© <span id="year"></span> Maximiza tu Empresa. Web personal de Zamir Rojas Jaramillo.</p>
+  <button class="copy-btn" id="copyPhone">Copiar WhatsApp</button>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

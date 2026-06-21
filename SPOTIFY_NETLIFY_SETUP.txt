@@ -1,0 +1,73 @@
+SPOTIFY + NETLIFY FUNCTIONS - FASE 3
+
+IMPORTANTE:
+No subas tu Client Secret ni Refresh Token dentro de index.html, script.js o GitHub público.
+
+ARCHIVOS AGREGADOS:
+- netlify.toml
+- netlify/functions/spotify-now-playing.js
+- spotify.html actualizado
+- index.html actualizado con widget junto al panel de la N
+- estado.html para probar estados manuales
+- script.js actualizado con estado dinámico y consulta Spotify
+
+VARIABLES QUE DEBES CREAR EN NETLIFY:
+SPOTIFY_CLIENT_ID
+SPOTIFY_CLIENT_SECRET
+SPOTIFY_REFRESH_TOKEN
+
+DÓNDE SE CONFIGURAN EN NETLIFY:
+Site configuration / Environment variables
+
+CÓMO FUNCIONA:
+1. La web carga normal.
+2. script.js consulta:
+   /.netlify/functions/spotify-now-playing
+3. La función usa las variables privadas de Netlify.
+4. La función consulta Spotify.
+5. La web muestra canción, artista, portada y enlace.
+
+SI AÚN NO CONFIGURAS SPOTIFY:
+La web no se rompe. Mostrará "Spotify pendiente".
+
+ESTADO DINÁMICO:
+- Horario automático:
+  09:00 - 18:30: En oficina
+  19:30 - 21:30: En gimnasio
+  22:30 - 07:30: Descansando
+- Estado manual:
+  Entra a estado.html y selecciona un estado.
+- Nota:
+  El modo manual actual usa localStorage. Eso cambia solo en tu navegador.
+  Para que todos vean el mismo estado, se necesita conexión global en una siguiente etapa.
+
+SUBIDA RECOMENDADA:
+1. Subir este proyecto a GitHub.
+2. Conectar el repositorio a Netlify.
+3. Configurar variables de entorno.
+4. Netlify desplegará la web y la función.
+
+
+ADMIN PRIVADO - FASE 4
+
+ARCHIVOS NUEVOS:
+- admin.html
+- netlify/functions/status.js
+
+VARIABLE NUEVA EN NETLIFY:
+ADMIN_PASSWORD
+
+CÓMO USAR:
+1. En Netlify, crea la variable ADMIN_PASSWORD.
+2. Sube/conecta el proyecto.
+3. Entra a:
+   https://TU-SITIO.netlify.app/admin.html
+4. Escribe tu clave.
+5. Cambia tu estado.
+6. Los visitantes solo verán el estado, no el panel.
+
+IMPORTANTE:
+- El botón público "Cambiar estado" fue retirado del inicio.
+- estado.html redirige a admin.html.
+- El estado global se guarda en Netlify Blobs.
+- Si Netlify Functions o Blobs aún no están configurados, la web usa horario automático.

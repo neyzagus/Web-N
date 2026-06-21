@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spotify | Maximiza tu Empresa</title>
+  <meta name="description" content="Web personal futurista de Zamir Rojas Jaramillo, creador de Maximiza tu Empresa." />
+  <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="enlaces">
+<canvas id="particles"></canvas>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<header class="navbar glass">
+  <a class="brand" href="index.html" aria-label="Inicio Maximiza tu Empresa">
+    <span class="brand-mark">N</span>
+    <span>
+      <strong>MAXIMIZA</strong>
+      <small>tu Empresa</small>
+    </span>
+  </a>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html" data-nav="inicio">Inicio</a>
+    <a href="index.html#accesos" data-nav="enlaces">Enlaces</a>
+    <a href="portafolio.html" data-nav="portafolio">Portafolio</a>
+    <a href="servicios.html" data-nav="servicios">Servicios</a>
+    <a href="acerca.html" data-nav="acerca">Acerca de mí</a>
+    <a href="contacto.html" data-nav="contacto">Contacto</a>
+  </nav>
+
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <a class="nav-cta" href="https://wa.me/51989562313?text=Hola%20Zamir%2C%20quiero%20informaci%C3%B3n%20sobre%20tus%20servicios." target="_blank" rel="noopener">
+    Mensaje ↗
+  </a>
+</header>
+<main class="inner-main">
+  <section class="page-hero reveal">
+    <div>
+      <span class="eyebrow">Spotify</span>
+      <h1 class="page-title">Lo que estoy <span>escuchando</span></h1>
+      <p class="page-subtitle">
+        Widget preparado para mostrar canción, artista, portada y enlace de Spotify usando Netlify Functions.
+      </p>
+    </div>
+    <a class="small-btn secondary" href="index.html#accesos">← Volver a enlaces</a>
+  </section>
+
+  <section class="grid-2">
+    <article class="page-card glass reveal spotify-page-widget">
+      <div class="spotify-widget spotify-large" id="spotifyWidgetLarge">
+        <div class="spotify-cover">
+          <span>♫</span>
+        </div>
+        <div class="spotify-info">
+          <small data-spotify-state>Spotify</small>
+          <strong data-spotify-title>Preparado para conectar</strong>
+          <p data-spotify-artist>Cuando configures Netlify Functions, aquí aparecerá lo que escuchas.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card glass reveal">
+      <h2>Cómo funcionará</h2>
+      <p>
+        La página consulta una función segura de Netlify. Esa función usa tus variables privadas para pedir a Spotify
+        la canción actual, sin exponer tokens en el navegador.
+      </p>
+      <div class="notice">
+        Si aún no configuras las variables de entorno, el widget mostrará el estado pendiente sin romper la web.
+      </div>
+    </article>
+  </section>
+</main>
+<footer class="footer glass">
+  <a class="brand mini-brand" href="index.html">
+    <span class="brand-mark">N</span>
+    <span>
+      <strong>MAXIMIZA</strong>
+      <small>tu Empresa</small>
+    </span>
+  </a>
+  <p>© <span id="year"></span> Maximiza tu Empresa. Web personal de Zamir Rojas Jaramillo.</p>
+  <button class="copy-btn" id="copyPhone">Copiar WhatsApp</button>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
