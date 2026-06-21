@@ -6,6 +6,28 @@
   <title>Admin | Maximiza tu Empresa</title>
   <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    body[data-page="admin"] { overflow-x: hidden; }
+    body[data-page="admin"] .admin-main {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+    body[data-page="admin"] .admin-box,
+    body[data-page="admin"] .admin-panel {
+      width: min(520px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+    body[data-page="admin"] .admin-panel {
+      width: min(980px, calc(100vw - 32px));
+    }
+    body[data-page="admin"] .admin-logo {
+      margin-inline: auto;
+    }
+    [hidden] { display: none !important; }
+  </style>
 </head>
 <body data-page="admin">
   <canvas id="particles"></canvas>
@@ -26,7 +48,7 @@
       </form>
     </section>
 
-    <section class="admin-panel hidden" id="adminPanel">
+    <section class="admin-panel" id="adminPanel" hidden>
       <div class="admin-top">
         <div>
           <span class="eyebrow">Panel privado</span>

@@ -1,0 +1,40 @@
+INSTRUCCIONES PARA SUBIR A GITHUB
+
+1. Descomprime este ZIP.
+2. Entra dentro de la carpeta descomprimida.
+3. Selecciona TODO con Ctrl + A.
+4. En GitHub, abre el repo Web-N.
+5. Add file -> Upload files.
+6. Arrastra TODO lo seleccionado.
+7. Commit changes.
+
+IMPORTANTE:
+- No subas el ZIP a GitHub.
+- No subas la carpeta contenedora.
+- index.html debe quedar visible en la raíz del repo.
+
+ESTRUCTURA CORRECTA:
+
+Web-N/
+  index.html
+  admin.html
+  styles.css
+  script.js
+  package.json
+  netlify.toml
+  assets/
+  netlify/
+    functions/
+      status.js
+      spotify-now-playing.js
+
+DESPUÉS:
+1. En Netlify:
+   Publish directory: .
+   Functions directory: netlify/functions
+2. Variable:
+   ADMIN_PASSWORD
+3. Deploys -> Trigger deploy -> Deploy site
+4. Probar:
+   https://maximizatuempresa.netlify.app/.netlify/functions/status
+   https://maximizatuempresa.netlify.app/admin.html

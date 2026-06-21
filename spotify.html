@@ -42,30 +42,37 @@
   <section class="page-hero reveal">
     <div>
       <span class="eyebrow">Spotify</span>
-      <h1 class="page-title">Música y actividad <span>en tiempo real</span></h1>
+      <h1 class="page-title">Lo que estoy <span>escuchando</span></h1>
       <p class="page-subtitle">
-        Esta página queda preparada para la próxima mejora: mostrar qué estás escuchando actualmente.
+        Widget preparado para mostrar canción, artista, portada y enlace de Spotify usando Netlify Functions.
       </p>
     </div>
     <a class="small-btn secondary" href="index.html#accesos">← Volver a enlaces</a>
   </section>
 
   <section class="grid-2">
-    <article class="page-card glass reveal">
-      <h2>Próxima integración</h2>
-      <p>
-        Aquí luego se puede conectar una sección tipo “Estoy escuchando ahora”, con portada, artista,
-        canción, barra de progreso y enlace a Spotify.
-      </p>
-      <div class="notice">Por ahora no puse un enlace falso. Cuando me pases tu link o prompt de Spotify, lo conectamos.</div>
+    <article class="page-card glass reveal spotify-page-widget">
+      <div class="spotify-widget spotify-large" id="spotifyWidgetLarge">
+        <div class="spotify-cover">
+          <span>♫</span>
+        </div>
+        <div class="spotify-info">
+          <small data-spotify-state>Spotify</small>
+          <strong data-spotify-title>Preparado para conectar</strong>
+          <p data-spotify-artist>Cuando configures Netlify Functions, aquí aparecerá lo que escuchas.</p>
+        </div>
+      </div>
     </article>
 
-    <article class="holo-card glass reveal">
-      <div class="holo-status"><span class="dot"></span> Spotify pendiente</div>
-      <div class="equalizer" style="margin-top:80px">
-        <span></span><span></span><span></span><span></span><span></span>
+    <article class="page-card glass reveal">
+      <h2>Cómo funcionará</h2>
+      <p>
+        La página consulta una función segura de Netlify. Esa función usa tus variables privadas para pedir a Spotify
+        la canción actual, sin exponer tokens en el navegador.
+      </p>
+      <div class="notice">
+        Si aún no configuras las variables de entorno, el widget mostrará el estado pendiente sin romper la web.
       </div>
-      <p>Diseño listo para animación musical.</p>
     </article>
   </section>
 </main>
