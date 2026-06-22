@@ -1,11 +1,16 @@
+// Firebase config de tu proyecto.
+// Cuando crees tu app web en Firebase, pega aquí los datos reales.
+// Este objeto NO es una contraseña. Aun así, configura reglas de seguridad en Firestore y Storage.
+
 export const firebaseConfig = {
-  apiKey: "AIzaSyALjq-PU46elRRY1J-K4lJXEO2fKd-vr4g",
-  authDomain:"maximizatuempresa-web.firebaseapp.com",
-  projectId: "maximizatuempresa-web",
-  storageBucket:"maximizatuempresa-web.firebasestorage.app",
-  messagingSenderId: "1036544972868",
-  appId:"1:1036544972868:web:c814f6752af4727a914411",
-  measurementId: "KY4Q0VKPH6"
+  apiKey: "PEGA_AQUI_TU_API_KEY",
+  authDomain: "PEGA_AQUI_TU_AUTH_DOMAIN",
+  projectId: "PEGA_AQUI_TU_PROJECT_ID",
+  storageBucket: "PEGA_AQUI_TU_STORAGE_BUCKET",
+  messagingSenderId: "PEGA_AQUI_TU_MESSAGING_SENDER_ID",
+  appId: "PEGA_AQUI_TU_APP_ID"
 };
 
+// Correo que tendrá permiso para editar desde admin.html.
+// Debe coincidir con el usuario que crearás en Firebase Authentication.
 export const ADMIN_EMAIL = "maximisatuempresa@gmail.com";

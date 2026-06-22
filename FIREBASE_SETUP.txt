@@ -18,7 +18,7 @@ CONFIGURAR FIREBASE - MAXIMIZA TU EMPRESA
 
 6. Crear usuario admin:
    Authentication -> Users -> Add user
-   Email: maximizatuempresas@gmail.com
+   Email: maximisatuempresa@gmail.com
    Password: crea tu clave privada
 
 7. Activar Firestore:
@@ -35,7 +35,7 @@ service cloud.firestore {
     match /site/{document=**} {
       allow read: if true;
       allow write: if request.auth != null
-        && request.auth.token.email == "maximizatuempresas@gmail.com";
+        && request.auth.token.email == "maximisatuempresa@gmail.com";
     }
   }
 }
@@ -52,7 +52,7 @@ service firebase.storage {
     match /site/{allPaths=**} {
       allow read: if true;
       allow write: if request.auth != null
-        && request.auth.token.email == "maximizatuempresas@gmail.com";
+        && request.auth.token.email == "maximisatuempresa@gmail.com";
     }
   }
 }

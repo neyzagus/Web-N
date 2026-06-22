@@ -59,7 +59,7 @@
       <h1>Admin</h1>
 
       <form id="firebaseLoginForm">
-        <input class="input" id="adminEmail" type="email" placeholder="Correo admin" autocomplete="username" value="maximizatuempresas@gmail.com" />
+        <input class="input" id="adminEmail" type="email" placeholder="Correo admin" autocomplete="username" value="maximisatuempresa@gmail.com" />
         <input class="input" id="adminPassword" type="password" placeholder="Clave" autocomplete="current-password" style="margin-top:12px;" />
 
         <div class="hero-actions" style="justify-content:center;margin-bottom:0;">
@@ -111,10 +111,20 @@
             <input class="input full" name="githubUrl" placeholder="GitHub URL" />
           </div>
 
+          <p class="admin-section-title">Mis webs</p>
+          <div class="admin-edit-grid">
+            <input class="input" name="web1Name" placeholder="Nombre Web 1" />
+            <input class="input" name="web1Url" placeholder="URL Web 1" />
+            <input class="input" name="web2Name" placeholder="Nombre Web 2" />
+            <input class="input" name="web2Url" placeholder="URL Web 2" />
+            <input class="input" name="web3Name" placeholder="Nombre Web 3" />
+            <input class="input" name="web3Url" placeholder="URL Web 3" />
+          </div>
+
           <p class="admin-section-title">Imagen</p>
           <div class="admin-edit-grid">
             <input class="input full" name="profileImageUrl" placeholder="URL de imagen principal" />
-            <input class="input full" id="profileImageInput" type="file" accept="image/*" />
+            <small class="notice full">Para costo cero, usa URL de imagen. No actives Storage todavía.</small>
           </div>
 
           <p class="admin-section-title">Estado</p>
@@ -134,7 +144,8 @@
         </form>
 
         <div class="hero-actions">
-          <button class="btn-primary magnetic" id="saveContent">Guardar cambios</button>
+          <button class="btn-secondary" id="loadDefaultsButton" type="button">Cargar datos base</button>
+          <button class="btn-primary magnetic" id="saveContent" type="button">Guardar cambios</button>
           <a class="btn-secondary" href="index.html">Listo</a>
         </div>
       </article>

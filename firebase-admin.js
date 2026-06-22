@@ -24,13 +24,13 @@ const DEFAULT_CONTENT = {
   brandName: "Maximiza tu Empresa",
   displayName: "Zamir Rojas Jaramillo",
   heroTitle: "Tu acceso directo a mis redes, proyectos y servicios",
-  heroSubtitle: "Creador de páginas web, portafolios y soluciones digitales para negocios.",
-  email: "maximizatuempresas@gmail.com",
+  heroSubtitle: "Freelancer y creador digital. Diseño páginas web, portafolios y soluciones digitales para negocios que buscan verse profesionales.",
+  email: "maximisatuempresa@gmail.com",
   whatsapp: "989562313",
   whatsappMessage: "Hola Zamir, quiero información sobre una página web.",
-  facebookUrl: "",
-  spotifyUrl: "",
-  instagramUrl: "",
+  facebookUrl: "https://www.facebook.com/profile.php?id=61566624557937",
+  spotifyUrl: "https://open.spotify.com/user/h6xbx01vat8rl5bv34gx7k9n",
+  instagramUrl: "https://www.instagram.com/maximiza_tu_empresa/",
   tiktokUrl: "",
   youtubeUrl: "",
   linkedinUrl: "",
@@ -41,8 +41,14 @@ const DEFAULT_CONTENT = {
   officeHours: "9:00 a. m. - 6:30 p. m.",
   gymHours: "7:30 p. m. - 9:30 p. m.",
   restHours: "10:30 p. m. - 7:30 a. m.",
-  servicesText: "Páginas web, portafolios digitales, sistemas web, automatización, diseño futurista y soporte.",
-  paymentsText: "Coordinar pagos, donaciones o adelantos por WhatsApp."
+  servicesText: "Creación de páginas web, portafolios digitales, sistemas web, automatización y diseño futurista.",
+  paymentsText: "Yape: 989562313. BCP: coordinar pago por WhatsApp.",
+  web1Name: "Nexa Web Studio",
+  web1Url: "#",
+  web2Name: "AllSys Redes",
+  web2Url: "https://allsysredes.allsys.app",
+  web3Name: "Maximisa tu Empresa",
+  web3Url: "https://maximisatuempresa.netlify.app/"
 };
 
 const loginBox = document.getElementById("adminLoginBox");
@@ -51,6 +57,7 @@ const loginForm = document.getElementById("firebaseLoginForm");
 const adminMessage = document.getElementById("adminMessage");
 const saveButton = document.getElementById("saveContent");
 const logoutButton = document.getElementById("logoutButton");
+const loadDefaultsButton = document.getElementById("loadDefaultsButton");
 const imageInput = document.getElementById("profileImageInput");
 
 let app;
@@ -87,6 +94,11 @@ function init() {
   loginForm?.addEventListener("submit", handleLogin);
   saveButton?.addEventListener("click", saveContent);
   logoutButton?.addEventListener("click", () => signOut(auth));
+  loadDefaultsButton?.addEventListener("click", () => {
+    fillForm(DEFAULT_CONTENT);
+    showMessage("Datos base cargados. Presiona Guardar cambios.");
+    if (window.showToast) window.showToast("Datos base cargados");
+  });
 
   onAuthStateChanged(auth, async (user) => {
     if (user && user.email === ADMIN_EMAIL) {
@@ -170,9 +182,11 @@ async function saveContent() {
     await setDoc(doc(db, "site", "content"), data, { merge: true });
     currentContent = data;
     showMessage("Guardado correctamente.");
+    if (window.showToast) window.showToast("Cambios guardados correctamente");
   } catch (error) {
     console.error(error);
     showMessage("No se pudo guardar. Revisa reglas de Firebase.");
+    if (window.showToast) window.showToast("No se pudo guardar");
   }
 }
 

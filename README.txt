@@ -76,5 +76,7 @@ V6 FIREBASE:
 - Panel editable para datos principales, contacto, redes, imagen, estado, servicios y pagos.
 - Firestore guarda el contenido editable.
 - Storage permite subir imagen principal.
-- Correo público actualizado a maximizatuempresas@gmail.com.
+- Correo público actualizado a maximisatuempresa@gmail.com.
 - No requiere ADMIN_PASSWORD de Netlify para el login.
+
+V7: datos base, enlaces directos, notificación al guardar, Yape, BCP por WhatsApp y webs iniciales.
