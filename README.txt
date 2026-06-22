@@ -80,3 +80,5 @@ V6 FIREBASE:
 - No requiere ADMIN_PASSWORD de Netlify para el login.
 
 V7: datos base, enlaces directos, notificación al guardar, Yape, BCP por WhatsApp y webs iniciales.
+
+V8: nombre visible Natán y Spotify PKCE helper en spotify-auth.html.

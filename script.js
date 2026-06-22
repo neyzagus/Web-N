@@ -595,7 +595,7 @@ function sendServiceRequest() {
   const name = encodeURIComponent($("#clientName")?.value || "");
   const business = encodeURIComponent($("#businessName")?.value || "");
   const message = encodeURIComponent($("#projectMessage")?.value || "");
-  const text = `Hola Zamir, quiero solicitar una página web.%0A%0ANombre: ${name}%0ANegocio: ${business}%0AIdea: ${message}`;
+  const text = `Hola Natán, quiero solicitar una página web.%0A%0ANombre: ${name}%0ANegocio: ${business}%0AIdea: ${message}`;
   window.open(`https://wa.me/${CONFIG.whatsappInternational}?text=${text}`, "_blank", "noopener");
 }
 

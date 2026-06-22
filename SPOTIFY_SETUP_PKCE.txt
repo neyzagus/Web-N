@@ -1,0 +1,36 @@
+SPOTIFY - PASOS PARA CONECTAR
+
+1. Entra a:
+   https://developer.spotify.com/dashboard
+
+2. Crea una app:
+   Nombre: Maximiza Spotify Widget
+   Website: https://maximizatuempresa.netlify.app
+
+3. En Redirect URIs agrega exactamente:
+   https://maximizatuempresa.netlify.app/spotify-auth.html
+
+4. Guarda la app.
+
+5. Copia el Client ID.
+
+6. Sube este proyecto a GitHub y despliega en Netlify.
+
+7. Abre:
+   https://maximizatuempresa.netlify.app/spotify-auth.html
+
+8. Pega tu Client ID y conecta Spotify.
+
+9. Copia el Refresh Token generado.
+
+10. En Netlify, crea estas variables:
+   SPOTIFY_CLIENT_ID
+   SPOTIFY_REFRESH_TOKEN
+
+11. Haz:
+   Deploys -> Trigger deploy -> Clear cache and deploy site
+
+12. Prueba:
+   https://maximizatuempresa.netlify.app/.netlify/functions/spotify-now-playing
+
+No necesitas SPOTIFY_CLIENT_SECRET si usas spotify-auth.html con PKCE.

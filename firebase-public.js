@@ -4,12 +4,12 @@ import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10
 
 const DEFAULT_CONTENT = {
   brandName: "Maximiza tu Empresa",
-  displayName: "Zamir Rojas Jaramillo",
+  displayName: "Natán",
   heroTitle: "Tu acceso directo a mis redes, proyectos y servicios",
   heroSubtitle: "Freelancer y creador digital. Diseño páginas web, portafolios y soluciones digitales para negocios que buscan verse profesionales.",
   email: "maximisatuempresa@gmail.com",
   whatsapp: "989562313",
-  whatsappMessage: "Hola Zamir, quiero información sobre una página web.",
+  whatsappMessage: "Hola Natán, quiero información sobre una página web.",
   facebookUrl: "https://www.facebook.com/profile.php?id=61566624557937",
   spotifyUrl: "https://open.spotify.com/user/h6xbx01vat8rl5bv34gx7k9n",
   instagramUrl: "https://www.instagram.com/maximiza_tu_empresa/",

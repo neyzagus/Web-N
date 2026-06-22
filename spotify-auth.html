@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conectar Spotify | Maximiza tu Empresa</title>
+  <link rel="icon" href="assets/logo-n.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .token-box {
+      word-break: break-all;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,229,255,.22);
+      background: rgba(0,229,255,.06);
+      color: var(--text);
+      margin-top: 14px;
+      font-size: .9rem;
+      line-height: 1.6;
+    }
+    .setup-list {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body data-page="spotify-auth">
+  <canvas id="particles"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <main class="inner-main">
+    <section class="page-hero reveal">
+      <div>
+        <span class="eyebrow">Spotify</span>
+        <h1 class="page-title">Conectar <span>lo que escucho</span></h1>
+        <p class="page-subtitle">
+          Usa esta página solo una vez para obtener tu Refresh Token de Spotify y ponerlo en Netlify.
+        </p>
+      </div>
+      <a class="small-btn secondary" href="admin.html">← Volver al admin</a>
+    </section>
+
+    <section class="grid-2">
+      <article class="page-card glass reveal">
+        <h2>Paso 1</h2>
+        <p class="setup-list">
+          En Spotify Developer crea una app y agrega este Redirect URI:
+        </p>
+        <div class="token-box" id="redirectUri"></div>
+
+        <label style="display:block;margin-top:18px;color:var(--muted);font-weight:900;">Spotify Client ID</label>
+        <input class="input" id="clientId" placeholder="Pega aquí tu Client ID" />
+
+        <div class="hero-actions">
+          <button class="btn-primary" id="connectSpotify">Conectar Spotify</button>
+        </div>
+      </article>
+
+      <article class="page-card glass reveal">
+        <h2>Resultado</h2>
+        <p class="setup-list">
+          Después de aceptar permisos, aparecerá tu Refresh Token. Copia ese valor en Netlify como
+          <strong>SPOTIFY_REFRESH_TOKEN</strong>.
+        </p>
+        <div class="token-box" id="resultBox">Pendiente de conexión...</div>
+        <div class="hero-actions">
+          <button class="btn-secondary" id="copyToken">Copiar token</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+  <script>
+    const redirectUri = window.location.origin + window.location.pathname;
+    const scopes = "user-read-currently-playing user-read-playback-state";
+    let currentRefreshToken = "";
+
+    document.getElementById("redirectUri").textContent = redirectUri;
+
+    document.getElementById("connectSpotify").addEventListener("click", startAuth);
+    document.getElementById("copyToken").addEventListener("click", async () => {
+      if (!currentRefreshToken) return alert("Aún no hay token.");
+      await navigator.clipboard.writeText(currentRefreshToken);
+      alert("Refresh Token copiado.");
+    });
+
+    async function startAuth() {
+      const clientId = document.getElementById("clientId").value.trim();
+      if (!clientId) return alert("Pega tu Client ID.");
+
+      const verifier = generateCodeVerifier(128);
+      const challenge = await generateCodeChallenge(verifier);
+
+      localStorage.setItem("spotify_client_id", clientId);
+      localStorage.setItem("spotify_code_verifier", verifier);
+
+      const params = new URLSearchParams({
+        response_type: "code",
+        client_id: clientId,
+        scope: scopes,
+        redirect_uri: redirectUri,
+        code_challenge_method: "S256",
+        code_challenge: challenge
+      });
+
+      window.location.href = "https://accounts.spotify.com/authorize?" + params.toString();
+    }
+
+    async function handleCallback() {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+      if (!code) return;
+
+      const clientId = localStorage.getItem("spotify_client_id");
+      const verifier = localStorage.getItem("spotify_code_verifier");
+
+      if (!clientId || !verifier) {
+        document.getElementById("resultBox").textContent = "Falta Client ID o verifier. Vuelve a conectar.";
+        return;
+      }
+
+      const body = new URLSearchParams({
+        grant_type: "authorization_code",
+        code,
+        redirect_uri: redirectUri,
+        client_id: clientId,
+        code_verifier: verifier
+      });
+
+      const response = await fetch("https://accounts.spotify.com/api/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body
+      });
+
+      const data = await response.json();
+
+      if (data.refresh_token) {
+        currentRefreshToken = data.refresh_token;
+        document.getElementById("resultBox").innerHTML =
+          "<strong>Refresh Token:</strong><br>" + data.refresh_token +
+          "<br><br><strong>Netlify también necesita:</strong><br>SPOTIFY_CLIENT_ID = " + clientId;
+        window.history.replaceState({}, document.title, window.location.pathname);
+      } else {
+        document.getElementById("resultBox").textContent = JSON.stringify(data, null, 2);
+      }
+    }
+
+    function generateCodeVerifier(length) {
+      const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let text = "";
+      const randomValues = crypto.getRandomValues(new Uint8Array(length));
+      for (let i = 0; i < length; i++) {
+        text += possible.charAt(randomValues[i] % possible.length);
+      }
+      return text;
+    }
+
+    async function generateCodeChallenge(verifier) {
+      const data = new TextEncoder().encode(verifier);
+      const digest = await crypto.subtle.digest("SHA-256", data);
+      return btoa(String.fromCharCode(...new Uint8Array(digest)))
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
+    }
+
+    handleCallback();
+  </script>
+</body>
+</html>
