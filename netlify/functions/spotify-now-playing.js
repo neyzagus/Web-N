@@ -1,8 +1,12 @@
 // Netlify Function: spotify-now-playing
 // Variables requeridas en Netlify:
 // SPOTIFY_CLIENT_ID
-// SPOTIFY_CLIENT_SECRET
 // SPOTIFY_REFRESH_TOKEN
+//
+// Opcional:
+// SPOTIFY_CLIENT_SECRET
+//
+// Si usas spotify-auth.html con PKCE, no necesitas Client Secret.
 
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 const NOW_PLAYING_ENDPOINT = "https://api.spotify.com/v1/me/player/currently-playing";
@@ -13,47 +17,54 @@ exports.handler = async function () {
     const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
     const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
 
-    if (!clientId || !clientSecret || !refreshToken) {
+    if (!clientId || !refreshToken) {
       return json({
         configured: false,
         isPlaying: false,
         title: "Spotify pendiente",
-        artist: "Faltan variables de entorno en Netlify.",
-        url: "spotify.html"
+        artist: "Faltan SPOTIFY_CLIENT_ID y SPOTIFY_REFRESH_TOKEN en Netlify.",
+        url: "spotify-auth.html"
       }, 200);
     }
 
-    const basic = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+    const tokenBody = new URLSearchParams({
+      grant_type: "refresh_token",
+      refresh_token: refreshToken
+    });
+
+    const tokenHeaders = {
+      "Content-Type": "application/x-www-form-urlencoded"
+    };
+
+    if (clientSecret) {
+      const basic = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+      tokenHeaders.Authorization = `Basic ${basic}`;
+    } else {
+      tokenBody.append("client_id", clientId);
+    }
 
     const tokenResponse = await fetch(TOKEN_ENDPOINT, {
       method: "POST",
-      headers: {
-        "Authorization": `Basic ${basic}`,
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: new URLSearchParams({
-        grant_type: "refresh_token",
-        refresh_token: refreshToken
-      })
+      headers: tokenHeaders,
+      body: tokenBody
     });
 
     if (!tokenResponse.ok) {
+      const errorText = await tokenResponse.text();
       return json({
         configured: true,
         isPlaying: false,
         title: "Spotify sin conexión",
-        artist: "No se pudo renovar el access token.",
-        url: "spotify.html"
+        artist: "No se pudo renovar el token.",
+        error: errorText,
+        url: "spotify-auth.html"
       }, 200);
     }
 
     const tokenData = await tokenResponse.json();
-    const accessToken = tokenData.access_token;
 
     const nowPlayingResponse = await fetch(NOW_PLAYING_ENDPOINT, {
-      headers: {
-        "Authorization": `Bearer ${accessToken}`
-      }
+      headers: { "Authorization": `Bearer ${tokenData.access_token}` }
     });
 
     if (nowPlayingResponse.status === 204 || nowPlayingResponse.status === 202) {
@@ -62,7 +73,7 @@ exports.handler = async function () {
         isPlaying: false,
         title: "No estoy escuchando música ahora",
         artist: "Spotify está inactivo en este momento.",
-        url: "spotify.html"
+        url: "https://open.spotify.com/"
       }, 200);
     }
 
@@ -72,7 +83,7 @@ exports.handler = async function () {
         isPlaying: false,
         title: "Spotify no disponible",
         artist: "No se pudo obtener la canción actual.",
-        url: "spotify.html"
+        url: "https://open.spotify.com/"
       }, 200);
     }
 
@@ -85,7 +96,7 @@ exports.handler = async function () {
         isPlaying: false,
         title: "Spotify sin canción activa",
         artist: "No hay información disponible.",
-        url: "spotify.html"
+        url: "https://open.spotify.com/"
       }, 200);
     }
 
@@ -96,7 +107,7 @@ exports.handler = async function () {
       artist: item.artists?.map((artist) => artist.name).join(", ") || "Artista desconocido",
       album: item.album?.name || "",
       albumImageUrl: item.album?.images?.[0]?.url || "",
-      url: item.external_urls?.spotify || "spotify.html",
+      url: item.external_urls?.spotify || "https://open.spotify.com/",
       progressMs: song.progress_ms || 0,
       durationMs: item.duration_ms || 0
     }, 200);
@@ -106,8 +117,9 @@ exports.handler = async function () {
       configured: false,
       isPlaying: false,
       title: "Spotify pendiente",
-      artist: "La función aún no está configurada o está en modo local.",
-      url: "spotify.html"
+      artist: "La función aún no está configurada.",
+      error: error?.message || "Error",
+      url: "spotify-auth.html"
     }, 200);
   }
 };
